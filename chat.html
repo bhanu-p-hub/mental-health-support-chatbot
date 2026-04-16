@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MindCare AI Chat - Talk to MindCare AI, your compassionate mental health support companion. 24/7 support for anxiety, depression, stress, and more.">
+  <title>Chat with MindCare AI</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+<div class="chat-page">
+
+  <!-- ====================================================
+       LEFT SIDEBAR
+  ==================================================== -->
+  <aside class="chat-sidebar" id="chatSidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="sidebar-logo">
+        <div class="logo-icon">🧠</div>
+        <span class="logo-text">MindCare</span>
+      </a>
+      <button class="btn-icon" id="newChatBtn" title="New Conversation">
+        <i class="ph ph-pencil-simple"></i>
+      </button>
+    </div>
+
+    <div class="sidebar-content">
+
+      <!-- New Chat Button -->
+      <button class="new-chat-btn" id="newChatBtnAlt">
+        <i class="ph ph-plus"></i> New Conversation
+      </button>
+
+      <!-- Mood Widget -->
+      <div class="mood-widget">
+        <h4>Today's Mood</h4>
+        <div class="mood-mini-emojis">
+          <button class="mood-mini-btn" data-mood="😊" title="Good">😊</button>
+          <button class="mood-mini-btn" data-mood="😐" title="Okay">😐</button>
+          <button class="mood-mini-btn" data-mood="😔" title="Down">😔</button>
+          <button class="mood-mini-btn" data-mood="😰" title="Anxious">😰</button>
+          <button class="mood-mini-btn" data-mood="😠" title="Angry">😠</button>
+        </div>
+        <p class="mood-recorded" id="moodRecorded">✅ Mood recorded!</p>
+      </div>
+
+      <!-- Chat History -->
+      <div class="sidebar-section-title">Recent Chats</div>
+      <div class="chat-history-list" id="historyList">
+        <p style="font-size:12px;color:var(--text-muted);padding:4px 8px;">No previous chats</p>
+      </div>
+
+      <!-- Quick Resources -->
+      <div class="sidebar-section-title">Quick Tools</div>
+      <div class="quick-resources">
+        <button class="quick-res-item" onclick="openBreathing()">
+          <span class="qr-icon">🌬️</span>
+          Breathing Exercise
+        </button>
+        <button class="quick-res-item" onclick="openJournal()">
+          <span class="qr-icon">📝</span>
+          Guided Journaling
+        </button>
+        <button class="quick-res-item" onclick="openGrounding()">
+          <span class="qr-icon">🌱</span>
+          Grounding (5-4-3-2-1)
+        </button>
+        <a href="index.html#resources" class="quick-res-item">
+          <span class="qr-icon">📚</span>
+          Self-Help Library
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Sidebar Footer (User Profile) -->
+    <div class="sidebar-footer">
+      <div class="user-profile" onclick="openSettings()">
+        <div class="user-avatar" id="userDisplayAvatar">U</div>
+        <div class="user-info">
+          <div class="user-name" id="userDisplayName">Anonymous</div>
+          <div class="user-status">Active now</div>
+        </div>
+        <i class="ph ph-gear" style="color:var(--text-muted);font-size:16px;"></i>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ====================================================
+       MAIN CHAT AREA
+  ==================================================== -->
+  <main class="chat-main">
+
+    <!-- Chat Header -->
+    <header class="chat-header">
+      <div class="bot-info">
+        <div class="bot-avatar-wrap">
+          <img class="bot-avatar" src="assets/images/bot_avatar.png" alt="MindCare AI"
+            onerror="this.style.background='linear-gradient(135deg,#7C3AED,#0EA5E9)';this.src='';">
+          <div class="bot-status-dot"></div>
+        </div>
+        <div class="bot-details">
+          <div class="bot-name">MindCare AI</div>
+          <div class="bot-status">
+            <i class="ph ph-circle-wavy-check" style="font-size:13px;"></i>
+            Online · Confidential · Evidence-based
+          </div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn-icon" onclick="openBreathing()" title="Breathing Exercise">
+          <i class="ph ph-wind"></i>
+        </button>
+        <button class="btn-icon" onclick="openSettings()" title="Settings">
+          <i class="ph ph-gear"></i>
+        </button>
+        <a href="index.html" class="btn-icon" title="Back to Home">
+          <i class="ph ph-house"></i>
+        </a>
+      </div>
+    </header>
+
+    <!-- Messages Area -->
+    <div class="chat-messages" id="chatMessages">
+
+      <!-- Welcome Screen (shown before first message) -->
+      <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-avatar-wrap">
+          <div class="welcome-ring"></div>
+          <div class="welcome-ring-2"></div>
+          <img class="welcome-avatar" src="assets/images/bot_avatar.png" alt="MindCare AI"
+            onerror="this.style.background='linear-gradient(135deg,#7C3AED,#0EA5E9)';this.src='';">
+        </div>
+        <h2>Hi, I'm MindCare AI 💜</h2>
+        <p>
+          Your compassionate AI mental health companion. I'm here to listen, support, and guide you 
+          through whatever you're facing — no judgment, completely confidential.
+        </p>
+        <div class="quick-prompts">
+          <button class="quick-prompt-btn" data-prompt="I've been feeling really anxious lately">I'm feeling anxious</button>
+          <button class="quick-prompt-btn" data-prompt="I've been struggling with depression and low mood">I'm feeling down</button>
+          <button class="quick-prompt-btn" data-prompt="I'm completely overwhelmed with stress from work">I'm overwhelmed</button>
+          <button class="quick-prompt-btn" data-prompt="I feel very lonely and disconnected from others">I feel lonely</button>
+          <button class="quick-prompt-btn" data-prompt="Can you guide me through a breathing exercise?">Guide me through breathing</button>
+          <button class="quick-prompt-btn" data-prompt="I just need someone to listen to me right now">I just need to talk</button>
+          <button class="quick-prompt-btn" data-prompt="I'm having thoughts of self-harm and I need help">I need urgent support</button>
+          <button class="quick-prompt-btn" data-prompt="How can you help me with my mental health?">What can you help with?</button>
+        </div>
+      </div>
+
+    </div><!-- end chat-messages -->
+
+    <!-- Quick Replies Bar -->
+    <div class="quick-replies" id="quickReplies"></div>
+
+    <!-- Disclaimer -->
+    <p class="chat-disclaimer">
+      🔒 Conversations are private. MindCare AI is an AI, not a human therapist. 
+      In crisis? Call <strong>iCall: 9152987821</strong> or <strong>Vandrevala: 1860-2662-345</strong>
+    </p>
+
+    <!-- Chat Input Area -->
+    <div class="chat-input-area">
+      <div class="input-row">
+        <textarea
+          id="chatInput"
+          class="chat-textarea"
+          placeholder="Share what's on your mind... (press Enter to send)"
+          rows="1"
+        ></textarea>
+        <div class="input-actions">
+          <button class="input-action-btn" title="Emoji" onclick="toggleEmojiPanel()">😊</button>
+          <button class="input-action-btn" title="Voice" onclick="startVoice()">🎤</button>
+          <button class="send-btn" id="sendBtn" title="Send">
+            <i class="ph ph-paper-plane-tilt"></i>
+          </button>
+        </div>
+      </div>
+      <p class="input-hint">
+        Press Enter to send · Shift+Enter for new line · All conversations are end-to-end confidential
+      </p>
+    </div>
+
+  </main>
+
+  <!-- ====================================================
+       RIGHT PANEL
+  ==================================================== -->
+  <aside class="chat-right-panel" id="rightPanel">
+
+    <!-- Wellness Chart -->
+    <div>
+      <p class="panel-section-title">Weekly Wellness</p>
+      <div class="wellness-card">
+        <div class="wellness-chart">
+          <div class="wellness-bar" style="height:40%"></div>
+          <div class="wellness-bar" style="height:55%"></div>
+          <div class="wellness-bar" style="height:35%"></div>
+          <div class="wellness-bar" style="height:70%"></div>
+          <div class="wellness-bar" style="height:52%"></div>
+          <div class="wellness-bar" style="height:65%"></div>
+          <div class="wellness-bar today" style="height:80%"></div>
+        </div>
+        <div class="wellness-days">
+          <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>Today</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coping Tools -->
+    <div>
+      <p class="panel-section-title">Coping Tools</p>
+      <div class="coping-tools">
+        <button class="coping-tool-item" onclick="openBreathing()">
+          <span class="ct-icon">🌬️</span>
+          <div class="ct-info">
+            <div class="ct-name">Box Breathing</div>
+            <div class="ct-desc">4-4-4-4 technique · 2 min</div>
+          </div>
+        </button>
+        <button class="coping-tool-item" onclick="openGrounding()">
+          <span class="ct-icon">🌱</span>
+          <div class="ct-info">
+            <div class="ct-name">Grounding</div>
+            <div class="ct-desc">5-4-3-2-1 Senses · 3 min</div>
+          </div>
+        </button>
+        <button class="coping-tool-item" onclick="openJournal()">
+          <span class="ct-icon">📝</span>
+          <div class="ct-info">
+            <div class="ct-name">Thought Journal</div>
+            <div class="ct-desc">CBT journaling · 5 min</div>
+          </div>
+        </button>
+        <button class="coping-tool-item" onclick="sendDirectMessage('Tell me a positive affirmation to help me right now')">
+          <span class="ct-icon">💬</span>
+          <div class="ct-info">
+            <div class="ct-name">Daily Affirmation</div>
+            <div class="ct-desc">Positive reinforcement</div>
+          </div>
+        </button>
+        <button class="coping-tool-item" onclick="sendDirectMessage('Guide me through a mindfulness meditation exercise')">
+          <span class="ct-icon">🧘</span>
+          <div class="ct-info">
+            <div class="ct-name">Mindfulness</div>
+            <div class="ct-desc">Guided meditation · 5 min</div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Emergency Contacts -->
+    <div>
+      <p class="panel-section-title">Emergency Help</p>
+      <div class="emergency-card" id="emergencyCard">
+        <h4>🆘 Crisis Helplines</h4>
+        <div class="emergency-number">
+          <span class="en-name">iCall (India)</span>
+          <a href="tel:9152987821" class="en-num">9152987821</a>
+        </div>
+        <div class="emergency-number">
+          <span class="en-name">Vandrevala</span>
+          <a href="tel:18602662345" class="en-num">1860-2662-345</a>
+        </div>
+        <div class="emergency-number">
+          <span class="en-name">AASRA</span>
+          <a href="tel:9820466627" class="en-num">9820466627</a>
+        </div>
+        <div class="emergency-number">
+          <span class="en-name">Emergency</span>
+          <a href="tel:112" class="en-num">112</a>
+        </div>
+        <div class="emergency-number">
+          <span class="en-name">Crisis Text (US)</span>
+          <span class="en-num" style="font-size:12px;">Text HOME to 741741</span>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+</div><!-- end .chat-page -->
+
+<!-- ====================================================
+     BREATHING EXERCISE MODAL
+==================================================== -->
+<div class="modal-overlay breathing-modal" id="breathingModal">
+  <div class="modal" style="max-width:440px;text-align:center;">
+    <button class="modal-close-btn" onclick="closeBreathing()">✕</button>
+    <h3>🌬️ Box Breathing</h3>
+    <p>A powerful technique to calm your nervous system in minutes. Follow the circle.</p>
+
+    <div class="breath-circle-wrap">
+      <div class="breath-circle" id="breathCircle">Ready</div>
+    </div>
+
+    <div class="breath-phase" id="breathPhase">Get Ready</div>
+    <div class="breath-countdown" id="breathCount">4</div>
+    <p class="breath-instruction" id="breathInstruction">Find a comfortable position and relax your shoulders...</p>
+
+    <div style="display:flex;gap:12px;justify-content:center;margin-top:8px;">
+      <button class="btn btn-outline btn-sm" onclick="closeBreathing()">End Session</button>
+      <button class="btn btn-primary btn-sm" onclick="sendDirectMessage('The breathing exercise really helped me, thank you!')">I feel calmer ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- ====================================================
+     GROUNDING MODAL
+==================================================== -->
+<div class="modal-overlay" id="groundingModal">
+  <div class="modal" style="max-width:480px;">
+    <button class="modal-close-btn" onclick="closeGrounding()">✕</button>
+    <h3>🌱 Grounding: 5-4-3-2-1</h3>
+    <p>This technique pulls your attention to the present moment, interrupting anxiety spirals.</p>
+
+    <div id="groundingStep" style="margin:20px 0;">
+      <div style="font-size:40px;margin-bottom:12px;">👁️</div>
+      <h4 style="font-size:18px;font-weight:700;margin-bottom:8px;color:var(--primary-light);">
+        Name 5 things you can <strong>SEE</strong>
+      </h4>
+      <p style="font-size:14px;color:var(--text-secondary);">Look around and notice 5 distinct things in your environment. Say them out loud or write them down.</p>
+    </div>
+
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button class="btn btn-outline btn-sm" id="groundingPrev" onclick="prevGrounding()" style="display:none;">← Previous</button>
+      <button class="btn btn-primary btn-sm" id="groundingNext" onclick="nextGrounding()">Next Step →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ====================================================
+     JOURNAL MODAL
+==================================================== -->
+<div class="modal-overlay" id="journalModal">
+  <div class="modal" style="max-width:520px;">
+    <button class="modal-close-btn" onclick="closeJournal()">✕</button>
+    <h3>📝 Guided Thought Journal</h3>
+    <p>Based on CBT techniques to help you examine and reshape unhelpful thought patterns.</p>
+
+    <div class="modal-form">
+      <div class="form-group">
+        <label>What situation or event is troubling you?</label>
+        <input type="text" id="journalSituation" placeholder="E.g., 'My boss criticized my work in front of others'">
+      </div>
+      <div class="form-group">
+        <label>What automatic thought did you have?</label>
+        <input type="text" id="journalThought" placeholder="E.g., 'I'm terrible at my job and everyone knows it'">
+      </div>
+      <div class="form-group">
+        <label>How did it make you feel? (0-10 intensity)</label>
+        <input type="text" id="journalFeeling" placeholder="E.g., 'Ashamed (8/10), anxious (7/10)'">
+      </div>
+      <div class="form-group">
+        <label>What evidence supports this thought?</label>
+        <input type="text" id="journalFor" placeholder="E.g., 'I made an error in the report'">
+      </div>
+      <div class="form-group">
+        <label>What evidence challenges this thought?</label>
+        <input type="text" id="journalAgainst" placeholder="E.g., 'I've delivered many successful projects'">
+      </div>
+    </div>
+
+    <div class="modal-actions" style="margin-top:20px;">
+      <button class="btn btn-outline btn-sm" onclick="closeJournal()">Close</button>
+      <button class="btn btn-primary btn-sm" onclick="submitJournal()">Analyze with MindCare AI ✨</button>
+    </div>
+  </div>
+</div>
+
+<!-- ====================================================
+     SETTINGS MODAL
+==================================================== -->
+<div class="modal-overlay" id="settingsModal">
+  <div class="modal" style="max-width:420px;">
+    <button class="modal-close-btn" onclick="closeSettings()">✕</button>
+    <h3>⚙️ Preferences</h3>
+    <p>Personalize your MindCare experience.</p>
+    <div class="modal-form">
+      <div class="form-group">
+        <label>Your Name (for personalization)</label>
+        <input type="text" id="settingName" placeholder="What should I call you?">
+      </div>
+      <div class="form-group">
+        <label>Response Style</label>
+        <select id="settingStyle">
+          <option value="empathetic">Empathetic & Warm</option>
+          <option value="clinical">Clinical & Direct</option>
+          <option value="friendly">Friendly & Casual</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Language Preference</label>
+        <select id="settingLang">
+          <option value="en">English</option>
+          <option value="hi">Hindi (coming soon)</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-outline btn-sm" onclick="closeSettings()">Cancel</button>
+      <button class="btn btn-primary btn-sm" id="saveSettings">Save Preferences</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/responses.js"></script>
+<script src="assets/js/chat.js"></script>
+<script>
+// ── GROUNDING EXERCISE ──────────────────────────────────────────────
+const groundingSteps = [
+  { emoji: '👁️', sense: 'SEE', count: 5, desc: 'Look around and notice 5 distinct things in your environment. Say them out loud or write them down.' },
+  { emoji: '🤲', sense: 'TOUCH', count: 4, desc: 'Notice 4 things you can touch. Feel the texture, temperature, and weight of each.' },
+  { emoji: '👂', sense: 'HEAR', count: 3, desc: 'Close your eyes and listen. Name 3 sounds you can hear right now.' },
+  { emoji: '👃', sense: 'SMELL', count: 2, desc: 'Take a slow breath. Name 2 scents you can smell, or recall 2 comforting scents.' },
+  { emoji: '👅', sense: 'TASTE', count: 1, desc: 'Name 1 thing you can taste right now, or recall your favorite taste sensation.' }
+];
+let groundingIdx = 0;
+
+function openGrounding() {
+  groundingIdx = 0;
+  updateGrounding();
+  document.getElementById('groundingModal').classList.add('active');
+}
+
+function closeGrounding() {
+  document.getElementById('groundingModal').classList.remove('active');
+}
+
+function updateGrounding() {
+  const step = groundingSteps[groundingIdx];
+  document.getElementById('groundingStep').innerHTML = `
+    <div style="font-size:40px;margin-bottom:12px;">${step.emoji}</div>
+    <h4 style="font-size:18px;font-weight:700;margin-bottom:8px;color:var(--primary-light);">
+      Name <strong>${step.count}</strong> things you can <strong>${step.sense}</strong>
+    </h4>
+    <p style="font-size:14px;color:var(--text-secondary);">${step.desc}</p>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:12px;">Step ${groundingIdx+1} of ${groundingSteps.length}</p>
+  `;
+  document.getElementById('groundingPrev').style.display = groundingIdx > 0 ? 'block' : 'none';
+  document.getElementById('groundingNext').textContent = groundingIdx === groundingSteps.length - 1 ? 'Finish ✓' : 'Next Step →';
+}
+
+function nextGrounding() {
+  if (groundingIdx === groundingSteps.length - 1) {
+    closeGrounding();
+    sendDirectMessage("I just completed the 5-4-3-2-1 grounding exercise. How am I doing?");
+  } else {
+    groundingIdx++;
+    updateGrounding();
+  }
+}
+
+function prevGrounding() {
+  groundingIdx = Math.max(0, groundingIdx - 1);
+  updateGrounding();
+}
+
+// ── JOURNAL SUBMIT ──────────────────────────────────────────────────
+function openJournal() {
+  document.getElementById('journalModal').classList.add('active');
+}
+
+function closeJournal() {
+  document.getElementById('journalModal').classList.remove('active');
+}
+
+function submitJournal() {
+  const situation = document.getElementById('journalSituation').value;
+  const thought   = document.getElementById('journalThought').value;
+  const feeling   = document.getElementById('journalFeeling').value;
+  const forEv     = document.getElementById('journalFor').value;
+  const against   = document.getElementById('journalAgainst').value;
+
+  if (!situation && !thought) { alert('Please fill in at least the situation and thought fields.'); return; }
+
+  closeJournal();
+
+  const summary = `I've filled out a thought journal: 
+Situation: ${situation || 'not specified'}. 
+Automatic thought: "${thought || 'not specified'}". 
+Feeling: ${feeling || 'not specified'}. 
+Evidence for: ${forEv || 'none listed'}. 
+Evidence against: ${against || 'none listed'}. 
+Can you help me analyze this and come up with a more balanced thought?`;
+
+  sendDirectMessage(summary);
+}
+
+// ── HELPER: Send a message directly without user typing it ──────────
+function sendDirectMessage(text) {
+  const input = document.getElementById('chatInput');
+  input.value = text;
+  document.getElementById('sendBtn').click();
+}
+
+// ── VOICE PLACEHOLDER ──────────────────────────────────────────────
+function startVoice() {
+  if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SR();
+    recognition.lang = 'en-IN';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.onresult = (e) => {
+      const transcript = e.results[0][0].transcript;
+      document.getElementById('chatInput').value = transcript;
+      document.getElementById('chatInput').dispatchEvent(new Event('input'));
+    };
+    recognition.onerror = () => alert('Voice recognition not available. Please type your message.');
+    recognition.start();
+    alert('🎤 Listening... Speak now.');
+  } else {
+    alert('Voice recognition is not supported in this browser. Please use Chrome.');
+  }
+}
+
+// ── EMOJI PANEL (simple) ───────────────────────────────────────────
+function toggleEmojiPanel() {
+  const emojis = ['😊','😔','😰','😠','😢','😌','💜','🙏','😞','😤'];
+  const existing = document.getElementById('emojiPanel');
+  if (existing) { existing.remove(); return; }
+
+  const panel = document.createElement('div');
+  panel.id = 'emojiPanel';
+  panel.style.cssText = 'position:absolute;bottom:160px;right:20px;background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-md);padding:12px;display:flex;gap:8px;flex-wrap:wrap;width:220px;z-index:100;';
+  emojis.forEach(e => {
+    const btn = document.createElement('button');
+    btn.textContent = e;
+    btn.style.cssText = 'font-size:22px;background:none;border:none;cursor:pointer;padding:4px;border-radius:6px;transition:transform 0.1s;';
+    btn.onmouseover = () => btn.style.transform = 'scale(1.3)';
+    btn.onmouseout = () => btn.style.transform = '';
+    btn.onclick = () => {
+      const inp = document.getElementById('chatInput');
+      inp.value += e;
+      panel.remove();
+      inp.focus();
+    };
+    panel.appendChild(btn);
+  });
+
+  document.querySelector('.chat-main').style.position = 'relative';
+  document.querySelector('.chat-main').appendChild(panel);
+}
+</script>
+</body>
+</html>

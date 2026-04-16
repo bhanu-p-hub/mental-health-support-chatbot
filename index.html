@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MindCare - Your compassionate AI mental health support companion. Get 24/7 mental health support, coping strategies, and emotional wellness tools.">
+  <meta name="keywords" content="mental health support, AI chatbot, anxiety help, depression support, emotional wellness, mental health resources">
+  <title>MindCare - AI Mental Health Support</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+<!-- ================================================================
+     LANDING PAGE
+================================================================ -->
+<div class="landing-page">
+
+  <!-- Navbar -->
+  <nav class="navbar" id="mainNav">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">🧠</div>
+      <span class="logo-text">MindCare</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#crisis">Crisis Help</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="chat.html" class="btn btn-outline btn-sm">Sign In</a>
+      <a href="chat.html" class="btn btn-primary btn-sm">Start Talking Free →</a>
+    </div>
+  </nav>
+
+  <!-- Affirmation Ticker -->
+  <div class="affirmation-ticker" style="margin-top:72px;">
+    <div class="ticker-track">
+      <span>You are worthy of love and belonging</span>
+      <span>Your feelings are valid</span>
+      <span>Healing is not linear, and that's okay</span>
+      <span>Asking for help is a sign of strength</span>
+      <span>You don't have to be perfect to deserve support</span>
+      <span>Small steps still move you forward</span>
+      <span>You have survived every hard day so far</span>
+      <span>It's okay to not be okay</span>
+      <!-- Duplicate for seamless loop -->
+      <span>You are worthy of love and belonging</span>
+      <span>Your feelings are valid</span>
+      <span>Healing is not linear, and that's okay</span>
+      <span>Asking for help is a sign of strength</span>
+      <span>You don't have to be perfect to deserve support</span>
+      <span>Small steps still move you forward</span>
+      <span>You have survived every hard day so far</span>
+      <span>It's okay to not be okay</span>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="pulse-dot"></div>
+        AI-Powered · 24/7 Available · Completely Confidential
+      </div>
+
+      <h1>
+        Your Mental Health<br>
+        Deserves <span class="gradient-text">Compassionate Support</span>
+      </h1>
+
+      <p>
+        MindCare is an empathetic AI companion trained in evidence-based mental health approaches.
+        Whether you're anxious, overwhelmed, or simply need someone to talk to — we're here, 24/7,
+        without judgment.
+      </p>
+
+      <div class="hero-actions">
+        <a href="chat.html" class="btn btn-primary btn-lg" id="startChatHeroBtn">
+          <i class="ph ph-chat-circle-dots"></i> Start a Free Conversation
+        </a>
+        <a href="#features" class="btn btn-outline btn-lg">
+          <i class="ph ph-info"></i> How It Works
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">50K+</div>
+          <div class="stat-label">People Supported</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">Always Available</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Confidential</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4.9★</div>
+          <div class="stat-label">User Rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mood Check-In Section -->
+  <section class="mood-section" id="mood">
+    <div class="mood-container">
+      <div class="section-header">
+        <div class="section-badge">Quick Check-In</div>
+        <h2>How are you feeling right now?</h2>
+        <p>Your mood matters. Select how you're feeling and let MindCare AI guide you toward the right support.</p>
+      </div>
+
+      <div class="mood-emojis">
+        <a href="chat.html?mood=great" class="mood-btn" id="moodGreat">
+          <span class="emoji">😊</span>
+          <span class="mood-label">Good</span>
+        </a>
+        <a href="chat.html?mood=neutral" class="mood-btn" id="moodNeutral">
+          <span class="emoji">😐</span>
+          <span class="mood-label">Okay</span>
+        </a>
+        <a href="chat.html?mood=sad" class="mood-btn" id="moodSad">
+          <span class="emoji">😔</span>
+          <span class="mood-label">Down</span>
+        </a>
+        <a href="chat.html?mood=anxious" class="mood-btn" id="moodAnxious">
+          <span class="emoji">😰</span>
+          <span class="mood-label">Anxious</span>
+        </a>
+        <a href="chat.html?mood=angry" class="mood-btn" id="moodAngry">
+          <span class="emoji">😠</span>
+          <span class="mood-label">Angry</span>
+        </a>
+        <a href="chat.html" class="mood-btn" id="moodOther">
+          <span class="emoji">💭</span>
+          <span class="mood-label">Complex</span>
+        </a>
+      </div>
+
+      <p style="font-size:13px;color:var(--text-muted);">
+        🔒 Your responses are private and never shared with anyone.
+      </p>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section" id="features">
+    <div class="section-header">
+      <div class="section-badge">What We Offer</div>
+      <h2>Evidence-Based Support, <br>Delivered With Empathy</h2>
+      <p>MindCare combines clinical knowledge with compassionate AI to offer real, meaningful mental health support.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon purple">🧠</div>
+        <h3>CBT-Based Conversations</h3>
+        <p>Our AI is trained in Cognitive Behavioral Therapy techniques to help you identify, challenge, and reframe unhelpful thought patterns.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon blue">🌬️</div>
+        <h3>Guided Breathing & Grounding</h3>
+        <p>Instantly access calming breathing exercises and proven grounding techniques for anxiety, panic attacks, and overwhelm.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon green">📊</div>
+        <h3>Daily Mood Tracking</h3>
+        <p>Log your mood daily and visualize your emotional wellness over time. Patterns become visible, and progress becomes measurable.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon yellow">🚨</div>
+        <h3>Crisis Detection & Resources</h3>
+        <p>MindCare recognizes crisis signals and immediately provides emergency resources, hotlines, and safety planning support.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon pink">💬</div>
+        <h3>Non-Judgmental Listening</h3>
+        <p>Talk about anything — anxiety, depression, relationships, grief — in a safe, confidential space free from stigma or judgment.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon red">🧘</div>
+        <h3>Mindfulness & Coping Tools</h3>
+        <p>Access a library of DBT skills, mindfulness exercises, journaling prompts, and self-care strategies tailored to your needs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources Section -->
+  <section class="resources-section" id="resources">
+    <div class="section-header">
+      <div class="section-badge">Mental Health Education</div>
+      <h2>Understanding Your Mental Health</h2>
+      <p>Knowledge is empowering. Learn about common mental health conditions and how to support yourself and others.</p>
+    </div>
+
+    <div class="resources-grid">
+      <a href="chat.html?topic=anxiety" class="resource-card" style="--gradient: linear-gradient(90deg, var(--primary), var(--secondary));text-decoration:none;display:block;">
+        <div class="resource-num">01</div>
+        <h3>Understanding Anxiety</h3>
+        <p>Anxiety affects 1 in 5 people. Learn about its causes, physical symptoms, and effective management strategies including breathing and CBT.</p>
+      </a>
+      <a href="chat.html?topic=depression" class="resource-card" style="--gradient: linear-gradient(90deg, var(--secondary), var(--accent));text-decoration:none;display:block;">
+        <div class="resource-num">02</div>
+        <h3>Depression Demystified</h3>
+        <p>Depression is not weakness — it's a medical condition. Understand the signs, what helps, and how to support someone you care about.</p>
+      </a>
+      <a href="chat.html?topic=stress" class="resource-card" style="--gradient: linear-gradient(90deg, var(--accent), var(--warning));text-decoration:none;display:block;">
+        <div class="resource-num">03</div>
+        <h3>Managing Stress &amp; Burnout</h3>
+        <p>Chronic stress changes your brain. Discover science-backed ways to recover, set boundaries, and build sustainable routines.</p>
+      </a>
+      <a href="chat.html?topic=trauma" class="resource-card" style="--gradient: linear-gradient(90deg, var(--warning), var(--danger));text-decoration:none;display:block;">
+        <div class="resource-num">04</div>
+        <h3>Trauma &amp; PTSD Recovery</h3>
+        <p>Trauma rewires our nervous system. Learn about trauma responses, healing approaches, and how to find specialized support.</p>
+      </a>
+      <a href="chat.html?topic=resilience" class="resource-card" style="--gradient: linear-gradient(90deg, var(--danger), var(--primary));text-decoration:none;display:block;">
+        <div class="resource-num">05</div>
+        <h3>Building Resilience</h3>
+        <p>Resilience is a skill, not a trait. Discover practical tools to strengthen your emotional immune system and bounce back from adversity.</p>
+      </a>
+      <a href="chat.html?topic=sleep" class="resource-card" style="--gradient: linear-gradient(90deg, var(--primary-light), var(--secondary-light));text-decoration:none;display:block;">
+        <div class="resource-num">06</div>
+        <h3>Sleep &amp; Mental Health</h3>
+        <p>Sleep and mental health are deeply intertwined. Learn evidence-based sleep hygiene practices that can transform how you feel.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Crisis Banner -->
+  <div class="crisis-banner" id="crisis">
+    <div class="crisis-icon">🆘</div>
+    <div class="crisis-text">
+      <h3>In immediate crisis or danger? Reach out now.</h3>
+      <p>
+        If you or someone you know is in immediate danger, please call emergency services (112 in India). 
+        For mental health crisis, trained counselors are available 24/7.
+      </p>
+    </div>
+    <div class="crisis-actions">
+      <a href="tel:9152987821" class="btn-crisis">📞 iCall: 9152987821</a>
+      <a href="tel:18602662345" class="btn-crisis">📞 Vandrevala: 1860-2662-345</a>
+      <a href="chat.html" class="btn btn-primary btn-sm">Talk to MindCare AI Now</a>
+    </div>
+  </div>
+
+  <!-- How It Works -->
+  <section style="padding:80px 40px;max-width:900px;margin:0 auto;text-align:center;">
+    <div class="section-badge">Simple & Secure</div>
+    <h2 style="font-family:var(--font-display);font-size:36px;font-weight:800;margin:16px 0 50px;">
+      Three Steps to Feeling Better
+    </h2>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;">
+      <div style="padding:32px 24px;background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-xl);">
+        <div style="font-size:48px;margin-bottom:16px;">💬</div>
+        <h3 style="font-size:18px;font-weight:700;margin-bottom:10px;">1. Start Talking</h3>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;">
+          No sign-up required. Simply open the chat and share what's on your mind — in your words, at your own pace.
+        </p>
+      </div>
+      <div style="padding:32px 24px;background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-xl);">
+        <div style="font-size:48px;margin-bottom:16px;">🤝</div>
+        <h3 style="font-size:18px;font-weight:700;margin-bottom:10px;">2. Get Supported</h3>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;">
+          MindCare AI listens empathetically, helps you understand your emotions, and offers evidence-based coping strategies.
+        </p>
+      </div>
+      <div style="padding:32px 24px;background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-xl);">
+        <div style="font-size:48px;margin-bottom:16px;">🌱</div>
+        <h3 style="font-size:18px;font-weight:700;margin-bottom:10px;">3. Grow & Heal</h3>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;">
+          Track your mood, practice daily coping tools, and take informed steps toward professional care when needed.
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-top:48px;">
+      <a href="chat.html" class="btn btn-primary btn-lg" id="startChatHeroBtn2">
+        Begin Your Journey → 
+      </a>
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <div style="background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.2);border-radius:var(--radius-lg);padding:20px 32px;max-width:900px;margin:0 40px 60px;margin-left:auto;margin-right:auto;">
+    <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;text-align:center;">
+      ⚠️ <strong style="color:var(--warning)">Important Disclaimer:</strong> MindCare is an AI-powered mental health support tool and is <em>not</em> a substitute for professional medical advice, diagnosis, or treatment. 
+      If you are experiencing a mental health crisis, please contact a licensed mental health professional or call an emergency helpline immediately.
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="landing-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:0;">
+          <div class="logo-icon">🧠</div>
+          <span class="logo-text">MindCare</span>
+        </a>
+        <p>An AI-powered mental health support companion offering compassionate, evidence-based guidance, 24/7. Your wellbeing is our priority.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="chat.html">Talk to MindCare AI</a></li>
+          <li><a href="#crisis">Crisis Help</a></li>
+          <li><a href="#resources">Resources</a></li>
+          <li><a href="chat.html?topic=breathing">Breathing Exercises</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="chat.html?topic=anxiety">About Anxiety</a></li>
+          <li><a href="chat.html?topic=depression">About Depression</a></li>
+          <li><a href="chat.html?topic=coping">Coping Strategies</a></li>
+          <li><a href="chat.html?topic=professional">Find a Therapist</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Helplines</h4>
+        <ul>
+          <li><a href="tel:9152987821">iCall: 9152987821</a></li>
+          <li><a href="tel:18602662345">Vandrevala: 1860-2662-345</a></li>
+          <li><a href="tel:9820466627">AASRA: 9820466627</a></li>
+          <li><a href="tel:112">Emergency: 112</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 MindCare. Built with 💜 for mental wellbeing.</p>
+      <p>Not a substitute for professional mental health care.</p>
+    </div>
+  </footer>
+
+</div><!-- end .landing-page -->
+
+<script>
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 50) {
+    nav.style.boxShadow = '0 8px 32px rgba(0,0,0,0.3)';
+  } else {
+    nav.style.boxShadow = '';
+  }
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Intersection Observer for animations
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.feature-card, .resource-card').forEach(el => {
+  el.style.opacity = '0';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
